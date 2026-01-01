@@ -1,0 +1,671 @@
+
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative; /* 为置顶按钮定位做准备 */
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+#pin-window-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#pin-window-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+#pin-window-btn.pinned {
+    background-color: #e74c3c;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* 登录区域样式 */
+.login-area {
+    /* background-color: #adb902; */
+    padding: 5px 15px;
+    border-radius: 10px;
+    /* box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 10px;
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    /* border: 1px solid #0b56a1; */
+
+}
+
+.login-status {
+    font-size: 14px;
+    color: #7f8c8d;
+
+}
+
+.login-form {
+    display: inline-block;
+    gap:5px;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* border: 1px solid #0b56a1; */
+    width:100%;
+}
+.login-in{
+    margin-left:20px;
+}
+.login-form input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #a1cdfa;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100px;
+}
+
+#loginPassword {
+    -webkit-text-security: disc;
+    -moz-text-security: disc;
+}
+
+.login-form button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #2980b9;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.management-btn {
+    background-color: #00a1a7;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.panel-btn {
+    background-color: #00b87a;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+    .panel-content{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 留言表单样式 */
+.message-form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 留言列表样式 */
+.messages-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.no-messages {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 40px;
+}
+/* 一个留言块的样式 */
+.message {
+    border-bottom: 1px solid #466843;
+    padding: 20px 0;
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.message-author-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.message-author {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.message-time {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+/* 留言内容框 */
+.message-content {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
+    border-bottom: none;
+
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reply-btn, .toggle-btn, .delete-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reply-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.reply-btn:hover {
+    background-color: #229954;
+}
+
+.toggle-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.toggle-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 回复表单样式 */
+.reply-form {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.reply-form.active {
+    display: block;
+}
+
+.reply-target-info {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 回复样式 */
+.replies {
+    margin-left: 40px;
+    margin-top: 15px;
+}
+
+.replies.collapsed {
+    display: none;
+}
+
+/* 嵌套回复样式 - 确保默认显示 */
+.nested-replies {
+    display: block !important; /* 强制显示 */
+    margin-left: 20px;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 10px;
+    margin-top: 10px;
+    background-color: #fafafa;
+}
+
+.nested-replies.collapsed {
+    display: none !important;
+}
+
+/* 嵌套回复项样式 */
+.nested-reply {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.nested-reply .reply-header {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.nested-reply .reply-content {
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.nested-reply .reply-actions {
+    font-size: 0.85em;
+}
+
+/* 确保回复按钮和切换按钮样式正确 */
+.reply-btn, .toggle-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.85em;
+    margin-right: 5px;
+}
+
+.reply-btn:hover, .toggle-btn:hover {
+    background-color: #0056b3;
+}
+
+/* 回复表单样式 */
+.reply-form {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.reply-form.active {
+    display: block;
+}
+
+.reply {
+    border-left: 3px solid #3498db;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reply-author {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.reply-time {
+    color: #7f8c8d;
+    font-size: 12px;
+}
+
+.reply-content {
+    color: #555;
+    line-height: 1.5;
+    border-bottom: none;
+    border-bottom:1px solid #1f4fd4;
+
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    .top-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    #pin-window-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        margin-left: 0;
+    }
+    .login-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .login-form {
+        justify-content: center;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .replies {
+        margin-left: 20px;
+    }
+}
+
+/* 置顶相关样式 */
+.message.pinned {
+    border-left: 4px solid #ff9800;
+    background-color: #fff8e1;
+}
+
+.pinned-badge {
+    background-color: #ff9800;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.pin-btn {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.pin-btn:hover {
+    background-color: #f57c00;
+}
+/* 添加到CSS文件末尾 */
+#pin-window-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#pin-window-btn:hover {
+    background-color: #2980b9;
+}
+
+#pin-window-btn.pinned {
+    background-color: #e74c3c;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+#pin-window-btn.pinned:hover {
+    background-color: #c0392b;
+}
+/* 原有样式保持不变，在文件末尾添加以下移动端适配 */
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .management-panel {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .panel-content {
+        flex-direction: column;
+    }
+    
+    .panel-btn {
+        width: 100%;
+        margin-bottom: 8px;
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .message-form {
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    input[type="text"], textarea {
+        font-size: 16px; /* 防止iOS缩放 */
+        padding: 12px;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .message-item {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .message-actions {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .reply-form {
+        padding: 15px;
+    }
+    
+    .nested-reply {
+        margin-left: 15px;
+        padding: 12px;
+    }
+}
+
+/* 小屏幕手机适配 */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .message-content {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .reply-btn, .delete-btn, .pin-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* 防止移动端点击延迟 */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 优化触摸体验 */
+button, input, textarea {
+    touch-action: manipulation;
+}
+
+/* 确保输入框在iOS中正常显示 */
+input, textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
+}

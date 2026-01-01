@@ -1,0 +1,31 @@
+{
+  "name": "lyb",
+  "version": "1.0.0",
+  "description": "滑县二中本地留言板",
+  "main": "lyb.html",
+  "window": {
+    "title": "带置顶按钮的NW.js程序",
+    "icon": "",
+    "width": 600,
+    "height": 800,
+    "min_width": 300,
+    "min_height": 400,
+    "toolbar": true,
+    "frame": true,
+    "resizable": true,
+    "position": "center"
+  },
+  "scripts": {
+    "start": "nw .",
+    "build": "nw-builder --platforms win32,win64 --outputDir dist ."
+  },
+  "keywords": [
+    "留言",
+    "留言板"
+  ],
+  "author": "王兆阳",
+  "license": "MIT",
+  "devDependencies": {
+    "nw-builder": "^4.16.0"
+  }
+}

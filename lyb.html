@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑县二中本地留言记事簿</title>
+    <link rel="stylesheet" href="lyb.css">
+    <!-- 引入SheetJS库用于Excel文件处理 -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
+    <!-- PWA配置开始 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4ecdc4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="留言板">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="msapplication-TileColor" content="#4ecdc4">
+    <meta name="msapplication-TileImage" content="icon-192.png">
+    <!-- PWA配置结束 -->
+</head>
+<body>
+    <div class="container">
+        <h2>滑县二中本地留言记事簿</h2>
+        <button id="pin-window-btn" class="pin-btn" title="窗口置顶">📌</button>
+        <!-- 登录区域 -->
+        <div class="login-area" id="loginArea">
+            <div class="login-form" id="loginForm">
+                <input type="text" id="loginUsername" placeholder="用户名" required 
+                       onkeypress="handleUsernameKeyPress(event)">
+                <input type="text" id="loginPassword" placeholder="密码" required 
+                       onkeypress="handleLoginKeyPress(event)">
+                <button class="login-in" onclick="login()">登录</button>
+            </div>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <span id="currentUser">管理员</span>
+                <button class="logout-btn" onclick="logout()">退出</button>
+                <button class="management-btn" onclick="toggleManagementPanel()">管理</button>
+            </div>
+        </div>
+        <!-- 管理面板 - 移动到用户信息区域内部 -->
+                <div id="managementPanel" class="management-panel" style="display: none;margin-bottom:10px;">
+                    <div class="panel-content">
+                       
+                        <button class="panel-btn" onclick="importData()">导入Excel数据</button>
+                        <button class="panel-btn" onclick="exportData()">导出Excel数据</button>
+                        <button class="panel-btn" onclick="clearAllMessages()">清除全部留言</button>
+                        
+                    </div>
+                </div>
+        <!-- 留言表单 -->
+        <div class="message-form">
+            <form id="messageForm">
+                <div class="form-group">
+                    <label for="author">姓名：</label>
+                    <input type="text" id="author" name="author" required placeholder="请输入您的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="content">留言内容：</label>
+                    <textarea id="content" name="content" required placeholder="请输入您的留言"></textarea>
+                </div>
+                <button type="submit">提交留言</button>
+            </form>
+        </div>
+        
+        <!-- 留言列表 -->
+        <div class="messages-container">
+            <h2>留言列表</h2>
+            <div id="messagesList">
+                <div class="no-messages">正在加载留言...</div>
+            </div>
+        </div>
+    </div>
+    <script src="xlsx.full.min.js"></script>
+    <script src="lyb.js"></script>
+    <!-- 添加Service Worker注册 -->
+    <script>
+        // 注册Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker 注册成功:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+        
+        // 检测是否在PWA环境中运行
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('可以安装为PWA应用');
+            // 可以在这里显示安装提示
+        });
+    </script>
+</body>
+</html>

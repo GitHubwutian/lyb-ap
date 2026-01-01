@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>生成应用图标</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .canvas-container { margin: 20px 0; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>生成PWA应用图标</h2>
+    
+    <div class="canvas-container">
+        <canvas id="iconCanvas" width="512" height="512"></canvas>
+    </div>
+    
+    <div>
+        <button onclick="generateIcon(192)">生成192x192图标</button>
+        <button onclick="generateIcon(512)">生成512x512图标</button>
+    </div>
+
+    <script>
+        function generateIcon(size) {
+            const canvas = document.getElementById('iconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 清空画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 设置画布尺寸
+            canvas.width = size;
+            canvas.height = size;
+            
+            // 绘制背景
+            ctx.fillStyle = '#4ecdc4';
+            ctx.fillRect(0, 0, size, size);
+            
+            // 绘制文字
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size/4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('留言', size/2, size/2);
+            
+            // 下载图标
+            const link = document.createElement('a');
+            link.download = `icon-${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // 初始化绘制512图标预览
+        generateIcon(512);
+    </script>
+</body>
+</html>
